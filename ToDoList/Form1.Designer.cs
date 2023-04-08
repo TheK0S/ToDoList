@@ -55,14 +55,15 @@
             // 
             // panel1
             // 
+            panel1.AutoScroll = true;
+            panel1.AutoSize = true;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(listField);
             panel1.Controls.Add(menu);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
+            panel1.Location = new Point(0, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 465);
+            panel1.Size = new Size(803, 468);
             panel1.TabIndex = 0;
             // 
             // listField
@@ -73,7 +74,7 @@
             listField.Dock = DockStyle.Fill;
             listField.Location = new Point(160, 0);
             listField.Name = "listField";
-            listField.Size = new Size(640, 465);
+            listField.Size = new Size(643, 468);
             listField.TabIndex = 1;
             // 
             // menu
@@ -84,7 +85,7 @@
             menu.Dock = DockStyle.Left;
             menu.Location = new Point(0, 0);
             menu.Name = "menu";
-            menu.Size = new Size(160, 465);
+            menu.Size = new Size(160, 468);
             menu.TabIndex = 0;
             // 
             // sort_Panel
@@ -97,7 +98,7 @@
             sort_Panel.Dock = DockStyle.Fill;
             sort_Panel.Location = new Point(0, 100);
             sort_Panel.Name = "sort_Panel";
-            sort_Panel.Size = new Size(160, 365);
+            sort_Panel.Size = new Size(160, 368);
             sort_Panel.TabIndex = 1;
             sort_Panel.Visible = false;
             // 
@@ -259,6 +260,7 @@
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

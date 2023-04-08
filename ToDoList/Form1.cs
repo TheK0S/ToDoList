@@ -23,7 +23,7 @@ namespace ToDoList
             {
                 Label footer = new Label() { AutoSize = false, Dock = DockStyle.Bottom, Text = list[i].DatesToString() };
                 Label text = new Label() { AutoSize = false, Dock = DockStyle.Fill, Text = list[i].comments };
-                Label priority = new Label() { AutoSize = false, Dock = DockStyle.Right, Text = list[i].priority.ToString() };
+                Label priority = new Label() { AutoSize = false, Dock = DockStyle.Right, Text = list[i].PriorityToString() };
                 Panel panel = new Panel() { Dock = DockStyle.Fill, Padding = new Padding(10), BorderStyle = BorderStyle.FixedSingle };
 
                 panel.Controls.Add(footer);
@@ -47,7 +47,7 @@ namespace ToDoList
         {
             for (int i = 0; i < 10; i++)
             {
-                DB.businessList.Add(new Business() 
+                DB.businessList.Add(new Business()
                 { dateTimeStart = DateTime.Now, dateTimeEnd = DateTime.Now, comments = $"Какая то задача № {i}", priority = Business.Priority.High, tag = $"Task {i}" });
             }
             PrintList(ref DB.businessList);

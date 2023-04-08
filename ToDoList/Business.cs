@@ -17,6 +17,10 @@ namespace ToDoList
         public string comments;
         public object file;
 
+        public string PriorityToString()
+        {
+            return priority == Priority.Low ? "Низкий" : priority == Priority.Low ? "Средний" : "Высокий";
+        }
         public string DatesToString()
         {
             return $"Дата начала: {dateTimeStart.ToString("G")}     Дата окончания: {dateTimeEnd.ToString("G")}";
