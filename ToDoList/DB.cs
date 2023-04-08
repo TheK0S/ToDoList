@@ -9,6 +9,8 @@ namespace ToDoList
     internal class DB
     {
         public static Form1 form1 = new Form1();
-        List<Business> businessList = new List<Business>();
+        public static List<Business> businessList = new List<Business>();
+
+       
     }
 }

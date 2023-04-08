@@ -10,18 +10,16 @@ namespace ToDoList
     {
         public enum Priority { Low, Medium, High };
 
-        DateTime dateTime = DateTime.Now;
-        Priority priority;
-        string tag;
-        string comments;
-        object file;
+        public DateTime dateTimeStart = DateTime.Now;
+        public DateTime dateTimeEnd = DateTime.Now;
+        public Priority priority;
+        public string tag;
+        public string comments;
+        public object file;
 
-        public Business(string comments, string tag, DateTime dateTime, Priority priority = Priority.Medium)
+        public string DatesToString()
         {
-            this.dateTime = dateTime;
-            this.priority = priority;
-            this.tag = tag;
-            this.comments = comments;
+            return $"Дата начала: {dateTimeStart.ToString("G")}     Дата окончания: {dateTimeEnd.ToString("G")}";
         }
     }
 }
