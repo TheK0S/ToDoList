@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             listField = new Panel();
             listView1 = new ListView();
+            startDate = new ColumnHeader();
+            deadline = new ColumnHeader();
+            teg = new ColumnHeader();
+            comments = new ColumnHeader();
+            priority = new ColumnHeader();
             menu = new Panel();
             sort_Panel = new Panel();
             sort_priority = new RadioButton();
@@ -50,7 +54,6 @@
             panel2 = new Panel();
             panel6 = new Panel();
             sortBTN = new Button();
-            stringsBindingSource = new BindingSource(components);
             panel1.SuspendLayout();
             listField.SuspendLayout();
             menu.SuspendLayout();
@@ -59,7 +62,6 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)stringsBindingSource).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -89,13 +91,45 @@
             // 
             // listView1
             // 
+            listView1.AllowDrop = true;
             listView1.BackColor = Color.FromArgb(10, 10, 10);
-            listView1.Location = new Point(26, 17);
+            listView1.BackgroundImage = (Image)resources.GetObject("listView1.BackgroundImage");
+            listView1.BorderStyle = BorderStyle.FixedSingle;
+            listView1.Columns.AddRange(new ColumnHeader[] { startDate, deadline, teg, comments, priority });
+            listView1.Dock = DockStyle.Fill;
+            listView1.ForeColor = Color.LightGray;
+            listView1.FullRowSelect = true;
+            listView1.Location = new Point(0, 0);
             listView1.Name = "listView1";
-            listView1.Size = new Size(121, 97);
+            listView1.Size = new Size(643, 468);
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.List;
+            // 
+            // startDate
+            // 
+            startDate.Text = "Дата начала";
+            startDate.Width = 200;
+            // 
+            // deadline
+            // 
+            deadline.Text = "Дата окончания";
+            // 
+            // teg
+            // 
+            teg.DisplayIndex = 3;
+            teg.Text = "Тег";
+            teg.Width = 80;
+            // 
+            // comments
+            // 
+            comments.DisplayIndex = 2;
+            comments.Text = "Текст";
+            comments.Width = 500;
+            // 
+            // priority
+            // 
+            priority.Text = "Приоритет";
             // 
             // menu
             // 
@@ -293,15 +327,10 @@
             sortBTN.UseVisualStyleBackColor = true;
             sortBTN.Click += sortBTN_Click;
             // 
-            // stringsBindingSource
-            // 
-            stringsBindingSource.DataSource = typeof(Microsoft.VisualBasic.Strings);
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
             ClientSize = new Size(800, 465);
             Controls.Add(panel1);
             Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -320,7 +349,6 @@
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)stringsBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -346,7 +374,11 @@
         private Button removeBTN;
         private Panel panel7;
         private Panel panel2;
-        private BindingSource stringsBindingSource;
         private ListView listView1;
+        private ColumnHeader startDate;
+        private ColumnHeader deadline;
+        private ColumnHeader teg;
+        private ColumnHeader comments;
+        private ColumnHeader priority;
     }
 }
