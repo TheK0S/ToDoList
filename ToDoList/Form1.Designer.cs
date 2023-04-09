@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             listField = new Panel();
+            listView1 = new ListView();
             menu = new Panel();
             sort_Panel = new Panel();
             sort_priority = new RadioButton();
@@ -43,14 +45,21 @@
             addBTN = new Button();
             panel3 = new Panel();
             panel5 = new Panel();
-            sortBTN = new Button();
+            removeBTN = new Button();
+            panel7 = new Panel();
+            panel2 = new Panel();
             panel6 = new Panel();
+            sortBTN = new Button();
+            stringsBindingSource = new BindingSource(components);
             panel1.SuspendLayout();
+            listField.SuspendLayout();
             menu.SuspendLayout();
             sort_Panel.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)stringsBindingSource).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -71,11 +80,22 @@
             listField.AutoScroll = true;
             listField.AutoSize = true;
             listField.BackColor = Color.Transparent;
+            listField.Controls.Add(listView1);
             listField.Dock = DockStyle.Fill;
             listField.Location = new Point(160, 0);
             listField.Name = "listField";
             listField.Size = new Size(643, 468);
             listField.TabIndex = 1;
+            // 
+            // listView1
+            // 
+            listView1.BackColor = Color.FromArgb(10, 10, 10);
+            listView1.Location = new Point(26, 17);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(121, 97);
+            listView1.TabIndex = 1;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.List;
             // 
             // menu
             // 
@@ -96,9 +116,9 @@
             sort_Panel.Controls.Add(sort_name);
             sort_Panel.Controls.Add(sort_default);
             sort_Panel.Dock = DockStyle.Fill;
-            sort_Panel.Location = new Point(0, 100);
+            sort_Panel.Location = new Point(0, 114);
             sort_Panel.Name = "sort_Panel";
-            sort_Panel.Size = new Size(160, 368);
+            sort_Panel.Size = new Size(160, 354);
             sort_Panel.TabIndex = 1;
             sort_Panel.Visible = false;
             // 
@@ -162,17 +182,18 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Controls.Add(panel4, 0, 0);
             tableLayoutPanel1.Controls.Add(panel5, 0, 1);
+            tableLayoutPanel1.Controls.Add(panel2, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(160, 100);
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Size = new Size(160, 114);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel4
@@ -182,7 +203,7 @@
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(3, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(154, 44);
+            panel4.Size = new Size(154, 31);
             panel4.TabIndex = 1;
             // 
             // addBTN
@@ -191,7 +212,7 @@
             addBTN.FlatStyle = FlatStyle.Popup;
             addBTN.Location = new Point(20, 0);
             addBTN.Name = "addBTN";
-            addBTN.Size = new Size(134, 44);
+            addBTN.Size = new Size(134, 31);
             addBTN.TabIndex = 2;
             addBTN.Text = "Добавить";
             addBTN.UseVisualStyleBackColor = true;
@@ -204,30 +225,50 @@
             panel3.Dock = DockStyle.Left;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(20, 44);
+            panel3.Size = new Size(20, 31);
             panel3.TabIndex = 1;
             // 
             // panel5
             // 
-            panel5.Controls.Add(sortBTN);
-            panel5.Controls.Add(panel6);
+            panel5.Controls.Add(removeBTN);
+            panel5.Controls.Add(panel7);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(3, 53);
+            panel5.Location = new Point(3, 40);
             panel5.Name = "panel5";
-            panel5.Size = new Size(154, 44);
+            panel5.Size = new Size(154, 31);
             panel5.TabIndex = 2;
             // 
-            // sortBTN
+            // removeBTN
             // 
-            sortBTN.Dock = DockStyle.Fill;
-            sortBTN.FlatStyle = FlatStyle.Popup;
-            sortBTN.Location = new Point(20, 0);
-            sortBTN.Name = "sortBTN";
-            sortBTN.Size = new Size(134, 44);
-            sortBTN.TabIndex = 3;
-            sortBTN.Text = "Сортировка";
-            sortBTN.UseVisualStyleBackColor = true;
-            sortBTN.Click += sortBTN_Click;
+            removeBTN.Dock = DockStyle.Fill;
+            removeBTN.FlatStyle = FlatStyle.Popup;
+            removeBTN.Location = new Point(20, 0);
+            removeBTN.Name = "removeBTN";
+            removeBTN.Size = new Size(134, 31);
+            removeBTN.TabIndex = 3;
+            removeBTN.Text = "Удалить";
+            removeBTN.UseVisualStyleBackColor = true;
+            removeBTN.Click += removeBTN_Click;
+            // 
+            // panel7
+            // 
+            panel7.BackgroundImage = (Image)resources.GetObject("panel7.BackgroundImage");
+            panel7.BackgroundImageLayout = ImageLayout.Zoom;
+            panel7.Dock = DockStyle.Left;
+            panel7.Location = new Point(0, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(20, 31);
+            panel7.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(panel6);
+            panel2.Controls.Add(sortBTN);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(3, 77);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(154, 34);
+            panel2.TabIndex = 3;
             // 
             // panel6
             // 
@@ -237,8 +278,24 @@
             panel6.ForeColor = Color.DarkGray;
             panel6.Location = new Point(0, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(20, 44);
+            panel6.Size = new Size(20, 34);
             panel6.TabIndex = 0;
+            // 
+            // sortBTN
+            // 
+            sortBTN.Dock = DockStyle.Fill;
+            sortBTN.FlatStyle = FlatStyle.Popup;
+            sortBTN.Location = new Point(0, 0);
+            sortBTN.Name = "sortBTN";
+            sortBTN.Size = new Size(154, 34);
+            sortBTN.TabIndex = 3;
+            sortBTN.Text = "Сортировка";
+            sortBTN.UseVisualStyleBackColor = true;
+            sortBTN.Click += sortBTN_Click;
+            // 
+            // stringsBindingSource
+            // 
+            stringsBindingSource.DataSource = typeof(Microsoft.VisualBasic.Strings);
             // 
             // Form1
             // 
@@ -251,14 +308,19 @@
             ForeColor = Color.DarkGray;
             Name = "Form1";
             Text = "ToDoList";
+            FormClosing += Form1_FormClosing;
+            Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            listField.ResumeLayout(false);
             menu.ResumeLayout(false);
             sort_Panel.ResumeLayout(false);
             sort_Panel.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)stringsBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -281,5 +343,10 @@
         private Panel panel6;
         private Button addBTN;
         private Button sortBTN;
+        private Button removeBTN;
+        private Panel panel7;
+        private Panel panel2;
+        private BindingSource stringsBindingSource;
+        private ListView listView1;
     }
 }
