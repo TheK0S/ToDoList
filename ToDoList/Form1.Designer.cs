@@ -31,14 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             listField = new Panel();
-            listView1 = new ListView();
-            startDate = new ColumnHeader();
-            deadline = new ColumnHeader();
-            teg = new ColumnHeader();
-            comments = new ColumnHeader();
-            priority = new ColumnHeader();
+            LayoutPanel = new FlowLayoutPanel();
             menu = new Panel();
             sort_Panel = new Panel();
+            tableList = new TableLayoutPanel();
             sort_priority = new RadioButton();
             sort_startDate = new RadioButton();
             sort_deadline = new RadioButton();
@@ -72,64 +68,34 @@
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(listField);
             panel1.Controls.Add(menu);
-            panel1.Location = new Point(0, 1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(803, 468);
+            panel1.Size = new Size(1126, 526);
             panel1.TabIndex = 0;
             // 
             // listField
             // 
             listField.AutoScroll = true;
-            listField.AutoSize = true;
             listField.BackColor = Color.Transparent;
-            listField.Controls.Add(listView1);
+            listField.Controls.Add(LayoutPanel);
             listField.Dock = DockStyle.Fill;
             listField.Location = new Point(160, 0);
             listField.Name = "listField";
-            listField.Size = new Size(643, 468);
+            listField.Size = new Size(966, 526);
             listField.TabIndex = 1;
             // 
-            // listView1
+            // LayoutPanel
             // 
-            listView1.AllowDrop = true;
-            listView1.BackColor = Color.FromArgb(10, 10, 10);
-            listView1.BackgroundImage = (Image)resources.GetObject("listView1.BackgroundImage");
-            listView1.BorderStyle = BorderStyle.FixedSingle;
-            listView1.Columns.AddRange(new ColumnHeader[] { startDate, deadline, teg, comments, priority });
-            listView1.Dock = DockStyle.Fill;
-            listView1.ForeColor = Color.LightGray;
-            listView1.FullRowSelect = true;
-            listView1.Location = new Point(0, 0);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(643, 468);
-            listView1.TabIndex = 1;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.List;
-            // 
-            // startDate
-            // 
-            startDate.Text = "Дата начала";
-            startDate.Width = 200;
-            // 
-            // deadline
-            // 
-            deadline.Text = "Дата окончания";
-            // 
-            // teg
-            // 
-            teg.DisplayIndex = 3;
-            teg.Text = "Тег";
-            teg.Width = 80;
-            // 
-            // comments
-            // 
-            comments.DisplayIndex = 2;
-            comments.Text = "Текст";
-            comments.Width = 500;
-            // 
-            // priority
-            // 
-            priority.Text = "Приоритет";
+            LayoutPanel.AutoScroll = true;
+            LayoutPanel.AutoSize = true;
+            LayoutPanel.Dock = DockStyle.Fill;
+            LayoutPanel.FlowDirection = FlowDirection.BottomUp;
+            LayoutPanel.Location = new Point(0, 0);
+            LayoutPanel.Name = "LayoutPanel";
+            LayoutPanel.Size = new Size(966, 526);
+            LayoutPanel.TabIndex = 0;
+            LayoutPanel.WrapContents = false;
             // 
             // menu
             // 
@@ -139,11 +105,12 @@
             menu.Dock = DockStyle.Left;
             menu.Location = new Point(0, 0);
             menu.Name = "menu";
-            menu.Size = new Size(160, 468);
+            menu.Size = new Size(160, 526);
             menu.TabIndex = 0;
             // 
             // sort_Panel
             // 
+            sort_Panel.Controls.Add(tableList);
             sort_Panel.Controls.Add(sort_priority);
             sort_Panel.Controls.Add(sort_startDate);
             sort_Panel.Controls.Add(sort_deadline);
@@ -152,9 +119,24 @@
             sort_Panel.Dock = DockStyle.Fill;
             sort_Panel.Location = new Point(0, 114);
             sort_Panel.Name = "sort_Panel";
-            sort_Panel.Size = new Size(160, 354);
+            sort_Panel.Size = new Size(160, 412);
             sort_Panel.TabIndex = 1;
             sort_Panel.Visible = false;
+            // 
+            // tableList
+            // 
+            tableList.AutoScroll = true;
+            tableList.AutoSize = true;
+            tableList.ColumnCount = 3;
+            tableList.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableList.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableList.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            tableList.Location = new Point(23, 293);
+            tableList.Name = "tableList";
+            tableList.RowCount = 1;
+            tableList.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableList.Size = new Size(120, 89);
+            tableList.TabIndex = 0;
             // 
             // sort_priority
             // 
@@ -331,7 +313,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 465);
+            ClientSize = new Size(1126, 526);
             Controls.Add(panel1);
             Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.DarkGray;
@@ -340,8 +322,8 @@
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             listField.ResumeLayout(false);
+            listField.PerformLayout();
             menu.ResumeLayout(false);
             sort_Panel.ResumeLayout(false);
             sort_Panel.PerformLayout();
@@ -374,11 +356,7 @@
         private Button removeBTN;
         private Panel panel7;
         private Panel panel2;
-        private ListView listView1;
-        private ColumnHeader startDate;
-        private ColumnHeader deadline;
-        private ColumnHeader teg;
-        private ColumnHeader comments;
-        private ColumnHeader priority;
+        private TableLayoutPanel tableList;
+        private FlowLayoutPanel LayoutPanel;
     }
 }

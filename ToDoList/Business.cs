@@ -8,22 +8,18 @@ namespace ToDoList
 {
     internal class Business
     {
-        public enum Priority { Low, Medium, High };
-
         public DateTime dateTimeStart = DateTime.Now;
         public DateTime dateTimeEnd = DateTime.Now;
-        public Priority priority;
+        public string priority;
         public string tag;
         public string comments;
         public object file;
+        public CheckBox checkBox = new CheckBox() { Text = "", Dock = DockStyle.Left, AutoSize = true};
 
-        public string PriorityToString()
-        {
-            return priority == Priority.Low ? "Низкий" : priority == Priority.Low ? "Средний" : "Высокий";
-        }
-        public string DatesToString()
-        {
-            return $"Дата начала: {dateTimeStart.ToString("G")}     Дата окончания: {dateTimeEnd.ToString("G")}";
-        }
+
+        //public string DatesToString()
+        //{
+        //    return $"Дата начала: {dateTimeStart.ToString("G")}     Дата окончания: {dateTimeEnd.ToString("G")}";
+        //}
     }
 }
