@@ -11,7 +11,7 @@ namespace ToDoList
         public DateTime dateTimeStart = DateTime.Now;
         public DateTime dateTimeEnd = DateTime.Now;
         public string priority;
-        public string tag;
+        public string header;
         public string comments;
         public object file;
         public CheckBox checkBox = new CheckBox() { Text = "", Dock = DockStyle.Left, AutoSize = true};
