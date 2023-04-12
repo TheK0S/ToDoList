@@ -54,6 +54,7 @@
             panel7 = new Panel();
             tabPage3 = new TabPage();
             sort_Panel = new Panel();
+            create_pdf = new Button();
             create_addTask = new Button();
             label8 = new Label();
             userFilePath = new Label();
@@ -71,6 +72,7 @@
             listField = new Panel();
             panel1 = new Panel();
             create_openFile = new OpenFileDialog();
+            saveFileDialog = new SaveFileDialog();
             menu.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -359,6 +361,7 @@
             // sort_Panel
             // 
             sort_Panel.BackColor = Color.FromArgb(10, 10, 10);
+            sort_Panel.Controls.Add(create_pdf);
             sort_Panel.Controls.Add(create_addTask);
             sort_Panel.Controls.Add(label8);
             sort_Panel.Controls.Add(userFilePath);
@@ -379,6 +382,17 @@
             sort_Panel.Size = new Size(222, 490);
             sort_Panel.TabIndex = 1;
             // 
+            // create_pdf
+            // 
+            create_pdf.FlatStyle = FlatStyle.Flat;
+            create_pdf.Location = new Point(26, 213);
+            create_pdf.Name = "create_pdf";
+            create_pdf.Size = new Size(171, 32);
+            create_pdf.TabIndex = 13;
+            create_pdf.Text = "Экспорт в pdf";
+            create_pdf.UseVisualStyleBackColor = true;
+            create_pdf.Click += create_pdf_Click;
+            // 
             // create_addTask
             // 
             create_addTask.FlatStyle = FlatStyle.Flat;
@@ -393,7 +407,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(66, 310);
+            label8.Location = new Point(66, 343);
             label8.Name = "label8";
             label8.Size = new Size(90, 19);
             label8.TabIndex = 12;
@@ -401,15 +415,15 @@
             // 
             // userFilePath
             // 
-            userFilePath.Location = new Point(11, 262);
+            userFilePath.Location = new Point(11, 307);
             userFilePath.Name = "userFilePath";
-            userFilePath.Size = new Size(201, 46);
+            userFilePath.Size = new Size(201, 36);
             userFilePath.TabIndex = 11;
             // 
             // addFile
             // 
             addFile.FlatStyle = FlatStyle.Flat;
-            addFile.Location = new Point(26, 218);
+            addFile.Location = new Point(26, 263);
             addFile.Name = "addFile";
             addFile.Size = new Size(171, 32);
             addFile.TabIndex = 5;
@@ -435,11 +449,11 @@
             create_text.BackColor = Color.FromArgb(20, 20, 20);
             create_text.BorderStyle = BorderStyle.FixedSingle;
             create_text.ForeColor = Color.DarkGray;
-            create_text.Location = new Point(11, 337);
+            create_text.Location = new Point(11, 371);
             create_text.Multiline = true;
             create_text.Name = "create_text";
             create_text.ScrollBars = ScrollBars.Both;
-            create_text.Size = new Size(201, 99);
+            create_text.Size = new Size(201, 68);
             create_text.TabIndex = 6;
             // 
             // label3
@@ -543,6 +557,10 @@
             // 
             create_openFile.FileName = "openFileDialog1";
             // 
+            // saveFileDialog
+            // 
+            saveFileDialog.Filter = "pdf|*.pdf";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -614,5 +632,7 @@
         private Label userFilePath;
         private Button addFile;
         private OpenFileDialog create_openFile;
+        private SaveFileDialog saveFileDialog;
+        private Button create_pdf;
     }
 }

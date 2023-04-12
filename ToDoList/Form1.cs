@@ -34,8 +34,8 @@ namespace ToDoList
                 {
                     boldDates.Add(item.DateTimeStart);
                 }
-                
-                Calendar.BoldedDates = boldDates.Distinct().ToArray();
+
+                Calendar.AnnuallyBoldedDates = boldDates.Distinct().ToArray();
             }
 
             if (listField.Controls.Contains(tableList))
@@ -252,6 +252,32 @@ namespace ToDoList
             {
                 userFilePath.Text = create_openFile.FileName;
             }
+        }
+
+        private void create_pdf_Click(object sender, EventArgs e)
+        {
+            if (DB.taskList.Count > 0)
+            {
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string text_pdf = "";
+                    foreach (var item in DB.taskList)
+                    {
+                        text_pdf += $"\t{item.Header}\n" +
+                            $"Start date: {item.DateTimeStart.ToString("G")}\n" +
+                            $"Deadline: {item.DateTimeEnd.ToString("G")}\n" +
+                            $"Priority: {item.Priority}\n" +
+                            $"Text: {item.Comments}\n\n\n";
+                    }
+
+                    DB.SaveToPDF(saveFileDialog.FileName, text_pdf);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Список дел пуст", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

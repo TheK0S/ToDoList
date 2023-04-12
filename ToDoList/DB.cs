@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +35,30 @@ namespace ToDoList
             catch (Exception)
             {
                 //, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }
+            }
+        }
+
+        public static bool SaveToPDF(string path_pdf, string text)
+        {
+            try
+            {
+                using (FileStream stream = new FileStream(path_pdf, FileMode.Create))
+                {
+                    Document document = new Document();
+                    PdfWriter.GetInstance(document, stream);
+                    document.Open();
+                    //BaseFont baseFont = BaseFont.CreateFont(@"C:\Windows\Fonts\Arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                    //iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL);
+                    iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.NORMAL);
+                    document.Add(new Paragraph(text, font));
+                    document.Close();
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }
