@@ -264,10 +264,10 @@ namespace ToDoList
             {
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string text_pdf = "";
+                    string text_pdf = "                                                      ToDoList\n";
                     foreach (var item in DB.taskList)
                     {
-                        text_pdf += $"\t{item.Header}\n" +
+                        text_pdf += $"    {item.Header}\n" +
                             $"Start date: {item.DateTimeStart.ToString("G")}\n" +
                             $"Deadline: {item.DateTimeEnd.ToString("G")}\n" +
                             $"Priority: {item.Priority}\n" +
