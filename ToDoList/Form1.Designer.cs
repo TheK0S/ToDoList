@@ -32,8 +32,18 @@
             menu = new Panel();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            monthCalendar1 = new MonthCalendar();
+            Calendar = new MonthCalendar();
             tabPage2 = new TabPage();
+            label2 = new Label();
+            button2 = new Button();
+            button1 = new Button();
+            textBox1 = new TextBox();
+            label1 = new Label();
+            sort_priority = new RadioButton();
+            sort_startDate = new RadioButton();
+            sort_deadline = new RadioButton();
+            sort_name = new RadioButton();
+            sort_default = new RadioButton();
             dragDropLabel = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel4 = new Panel();
@@ -44,13 +54,23 @@
             panel7 = new Panel();
             tabPage3 = new TabPage();
             sort_Panel = new Panel();
-            sort_priority = new RadioButton();
-            sort_startDate = new RadioButton();
-            sort_deadline = new RadioButton();
-            sort_name = new RadioButton();
-            sort_default = new RadioButton();
+            create_addTask = new Button();
+            label8 = new Label();
+            userFilePath = new Label();
+            addFile = new Button();
+            prioritySelector = new DomainUpDown();
+            create_text = new TextBox();
+            label3 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            create_endDate = new DateTimePicker();
+            label5 = new Label();
+            create_startDate = new DateTimePicker();
+            label4 = new Label();
+            create_header = new TextBox();
             listField = new Panel();
             panel1 = new Panel();
+            create_openFile = new OpenFileDialog();
             menu.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -80,7 +100,6 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
-            tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(236, 526);
@@ -89,7 +108,7 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.FromArgb(10, 10, 10);
-            tabPage1.Controls.Add(monthCalendar1);
+            tabPage1.Controls.Add(Calendar);
             tabPage1.Location = new Point(4, 26);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -97,33 +116,147 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Календарь";
             // 
-            // monthCalendar1
+            // Calendar
             // 
-            monthCalendar1.BackColor = SystemColors.MenuHighlight;
-            monthCalendar1.CalendarDimensions = new Size(1, 3);
-            monthCalendar1.Location = new Point(33, 25);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 0;
+            Calendar.BackColor = SystemColors.MenuHighlight;
+            Calendar.CalendarDimensions = new Size(1, 3);
+            Calendar.Location = new Point(33, 25);
+            Calendar.Name = "Calendar";
+            Calendar.TabIndex = 0;
             // 
             // tabPage2
             // 
             tabPage2.BackColor = Color.FromArgb(10, 10, 10);
+            tabPage2.Controls.Add(label2);
+            tabPage2.Controls.Add(button2);
+            tabPage2.Controls.Add(button1);
+            tabPage2.Controls.Add(textBox1);
+            tabPage2.Controls.Add(label1);
+            tabPage2.Controls.Add(sort_priority);
+            tabPage2.Controls.Add(sort_startDate);
+            tabPage2.Controls.Add(sort_deadline);
+            tabPage2.Controls.Add(sort_name);
+            tabPage2.Controls.Add(sort_default);
             tabPage2.Controls.Add(dragDropLabel);
             tabPage2.Controls.Add(tableLayoutPanel1);
-            tabPage2.Location = new Point(4, 26);
+            tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(228, 496);
+            tabPage2.Size = new Size(228, 498);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Изменить";
+            tabPage2.Text = " Изменить";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(89, 10);
+            label2.Name = "label2";
+            label2.Size = new Size(48, 19);
+            label2.TabIndex = 14;
+            label2.Text = "Поиск";
+            // 
+            // button2
+            // 
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(122, 76);
+            button2.Name = "button2";
+            button2.Size = new Size(100, 33);
+            button2.TabIndex = 3;
+            button2.Text = "Отменить";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(8, 76);
+            button1.Name = "button1";
+            button1.Size = new Size(100, 33);
+            button1.TabIndex = 2;
+            button1.Text = "Искать";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.FromArgb(20, 20, 20);
+            textBox1.ForeColor = Color.DarkGray;
+            textBox1.Location = new Point(8, 45);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(214, 25);
+            textBox1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(67, 135);
+            label1.Name = "label1";
+            label1.Size = new Size(85, 19);
+            label1.TabIndex = 10;
+            label1.Text = "Сортировка";
+            // 
+            // sort_priority
+            // 
+            sort_priority.Anchor = AnchorStyles.Top;
+            sort_priority.AutoSize = true;
+            sort_priority.Location = new Point(44, 282);
+            sort_priority.Name = "sort_priority";
+            sort_priority.Size = new Size(96, 23);
+            sort_priority.TabIndex = 9;
+            sort_priority.Text = "Приоритет";
+            sort_priority.UseVisualStyleBackColor = true;
+            // 
+            // sort_startDate
+            // 
+            sort_startDate.Anchor = AnchorStyles.Top;
+            sort_startDate.AutoSize = true;
+            sort_startDate.Location = new Point(44, 252);
+            sort_startDate.Name = "sort_startDate";
+            sort_startDate.Size = new Size(119, 23);
+            sort_startDate.TabIndex = 8;
+            sort_startDate.Text = "Дата создания";
+            sort_startDate.UseVisualStyleBackColor = true;
+            // 
+            // sort_deadline
+            // 
+            sort_deadline.Anchor = AnchorStyles.Top;
+            sort_deadline.AutoSize = true;
+            sort_deadline.Location = new Point(44, 222);
+            sort_deadline.Name = "sort_deadline";
+            sort_deadline.Size = new Size(141, 23);
+            sort_deadline.TabIndex = 7;
+            sort_deadline.Text = "Срок выполнения";
+            sort_deadline.UseVisualStyleBackColor = true;
+            // 
+            // sort_name
+            // 
+            sort_name.Anchor = AnchorStyles.Top;
+            sort_name.AutoSize = true;
+            sort_name.Location = new Point(44, 192);
+            sort_name.Name = "sort_name";
+            sort_name.Size = new Size(87, 23);
+            sort_name.TabIndex = 6;
+            sort_name.Text = "Название";
+            sort_name.UseVisualStyleBackColor = true;
+            // 
+            // sort_default
+            // 
+            sort_default.Anchor = AnchorStyles.Top;
+            sort_default.AutoSize = true;
+            sort_default.Checked = true;
+            sort_default.Location = new Point(44, 162);
+            sort_default.Name = "sort_default";
+            sort_default.Size = new Size(123, 23);
+            sort_default.TabIndex = 5;
+            sort_default.TabStop = true;
+            sort_default.Text = "По умолчанию";
+            sort_default.UseVisualStyleBackColor = true;
             // 
             // dragDropLabel
             // 
             dragDropLabel.AllowDrop = true;
-            dragDropLabel.Dock = DockStyle.Fill;
-            dragDropLabel.Location = new Point(3, 3);
+            dragDropLabel.Dock = DockStyle.Bottom;
+            dragDropLabel.Location = new Point(3, 319);
             dragDropLabel.Name = "dragDropLabel";
-            dragDropLabel.Size = new Size(222, 412);
+            dragDropLabel.Size = new Size(222, 98);
             dragDropLabel.TabIndex = 2;
             dragDropLabel.Text = "Перетащи список дел сюда";
             dragDropLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -139,7 +272,7 @@
             tableLayoutPanel1.Controls.Add(panel4, 0, 0);
             tableLayoutPanel1.Controls.Add(panel5, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(3, 415);
+            tableLayoutPanel1.Location = new Point(3, 417);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
@@ -161,12 +294,12 @@
             // addBTN
             // 
             addBTN.Dock = DockStyle.Fill;
-            addBTN.FlatStyle = FlatStyle.Popup;
+            addBTN.FlatStyle = FlatStyle.Flat;
             addBTN.Location = new Point(20, 0);
             addBTN.Name = "addBTN";
             addBTN.Size = new Size(196, 33);
-            addBTN.TabIndex = 2;
-            addBTN.Text = "Добавить";
+            addBTN.TabIndex = 4;
+            addBTN.Text = "Добавить файлы";
             addBTN.UseVisualStyleBackColor = true;
             addBTN.Click += addBTN_Click;
             // 
@@ -193,12 +326,12 @@
             // removeBTN
             // 
             removeBTN.Dock = DockStyle.Fill;
-            removeBTN.FlatStyle = FlatStyle.Popup;
+            removeBTN.FlatStyle = FlatStyle.Flat;
             removeBTN.Location = new Point(20, 0);
             removeBTN.Name = "removeBTN";
             removeBTN.Size = new Size(196, 33);
-            removeBTN.TabIndex = 3;
-            removeBTN.Text = "Удалить";
+            removeBTN.TabIndex = 5;
+            removeBTN.Text = "Удалить выделенные";
             removeBTN.UseVisualStyleBackColor = true;
             removeBTN.Click += removeBTN_Click;
             // 
@@ -216,83 +349,171 @@
             // 
             tabPage3.BackColor = Color.FromArgb(10, 10, 10);
             tabPage3.Controls.Add(sort_Panel);
-            tabPage3.Location = new Point(4, 24);
+            tabPage3.Location = new Point(4, 26);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(228, 498);
+            tabPage3.Size = new Size(228, 496);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "Сортировка";
+            tabPage3.Text = "  Создать   ";
             // 
             // sort_Panel
             // 
             sort_Panel.BackColor = Color.FromArgb(10, 10, 10);
-            sort_Panel.Controls.Add(sort_priority);
-            sort_Panel.Controls.Add(sort_startDate);
-            sort_Panel.Controls.Add(sort_deadline);
-            sort_Panel.Controls.Add(sort_name);
-            sort_Panel.Controls.Add(sort_default);
+            sort_Panel.Controls.Add(create_addTask);
+            sort_Panel.Controls.Add(label8);
+            sort_Panel.Controls.Add(userFilePath);
+            sort_Panel.Controls.Add(addFile);
+            sort_Panel.Controls.Add(prioritySelector);
+            sort_Panel.Controls.Add(create_text);
+            sort_Panel.Controls.Add(label3);
+            sort_Panel.Controls.Add(label7);
+            sort_Panel.Controls.Add(label6);
+            sort_Panel.Controls.Add(create_endDate);
+            sort_Panel.Controls.Add(label5);
+            sort_Panel.Controls.Add(create_startDate);
+            sort_Panel.Controls.Add(label4);
+            sort_Panel.Controls.Add(create_header);
             sort_Panel.Dock = DockStyle.Fill;
             sort_Panel.Location = new Point(3, 3);
             sort_Panel.Name = "sort_Panel";
-            sort_Panel.Size = new Size(222, 492);
+            sort_Panel.Size = new Size(222, 490);
             sort_Panel.TabIndex = 1;
             // 
-            // sort_priority
+            // create_addTask
             // 
-            sort_priority.Anchor = AnchorStyles.Top;
-            sort_priority.AutoSize = true;
-            sort_priority.Location = new Point(43, 180);
-            sort_priority.Name = "sort_priority";
-            sort_priority.Size = new Size(96, 23);
-            sort_priority.TabIndex = 4;
-            sort_priority.Text = "Приоритет";
-            sort_priority.UseVisualStyleBackColor = true;
+            create_addTask.FlatStyle = FlatStyle.Flat;
+            create_addTask.Location = new Point(27, 449);
+            create_addTask.Name = "create_addTask";
+            create_addTask.Size = new Size(171, 32);
+            create_addTask.TabIndex = 7;
+            create_addTask.Text = "Дабавить задачу";
+            create_addTask.UseVisualStyleBackColor = true;
+            create_addTask.Click += create_addTask_Click;
             // 
-            // sort_startDate
+            // label8
             // 
-            sort_startDate.Anchor = AnchorStyles.Top;
-            sort_startDate.AutoSize = true;
-            sort_startDate.Location = new Point(43, 140);
-            sort_startDate.Name = "sort_startDate";
-            sort_startDate.Size = new Size(119, 23);
-            sort_startDate.TabIndex = 3;
-            sort_startDate.Text = "Дата создания";
-            sort_startDate.UseVisualStyleBackColor = true;
+            label8.AutoSize = true;
+            label8.Location = new Point(66, 310);
+            label8.Name = "label8";
+            label8.Size = new Size(90, 19);
+            label8.TabIndex = 12;
+            label8.Text = "Текст задачи";
             // 
-            // sort_deadline
+            // userFilePath
             // 
-            sort_deadline.Anchor = AnchorStyles.Top;
-            sort_deadline.AutoSize = true;
-            sort_deadline.Location = new Point(43, 100);
-            sort_deadline.Name = "sort_deadline";
-            sort_deadline.Size = new Size(141, 23);
-            sort_deadline.TabIndex = 2;
-            sort_deadline.Text = "Срок выполнения";
-            sort_deadline.UseVisualStyleBackColor = true;
+            userFilePath.Location = new Point(11, 262);
+            userFilePath.Name = "userFilePath";
+            userFilePath.Size = new Size(201, 46);
+            userFilePath.TabIndex = 11;
             // 
-            // sort_name
+            // addFile
             // 
-            sort_name.Anchor = AnchorStyles.Top;
-            sort_name.AutoSize = true;
-            sort_name.Location = new Point(43, 60);
-            sort_name.Name = "sort_name";
-            sort_name.Size = new Size(87, 23);
-            sort_name.TabIndex = 1;
-            sort_name.Text = "Название";
-            sort_name.UseVisualStyleBackColor = true;
+            addFile.FlatStyle = FlatStyle.Flat;
+            addFile.Location = new Point(26, 218);
+            addFile.Name = "addFile";
+            addFile.Size = new Size(171, 32);
+            addFile.TabIndex = 5;
+            addFile.Text = "Прикрепить файл";
+            addFile.UseVisualStyleBackColor = true;
+            addFile.Click += addFile_Click;
             // 
-            // sort_default
+            // prioritySelector
             // 
-            sort_default.Anchor = AnchorStyles.Top;
-            sort_default.AutoSize = true;
-            sort_default.Checked = true;
-            sort_default.Location = new Point(43, 20);
-            sort_default.Name = "sort_default";
-            sort_default.Size = new Size(123, 23);
-            sort_default.TabIndex = 0;
-            sort_default.TabStop = true;
-            sort_default.Text = "По умолчанию";
-            sort_default.UseVisualStyleBackColor = true;
+            prioritySelector.BackColor = Color.FromArgb(10, 10, 10);
+            prioritySelector.BorderStyle = BorderStyle.FixedSingle;
+            prioritySelector.ForeColor = Color.DarkGray;
+            prioritySelector.Items.Add("Высокий");
+            prioritySelector.Items.Add("Средний");
+            prioritySelector.Items.Add("Низкий");
+            prioritySelector.Location = new Point(82, 173);
+            prioritySelector.Name = "prioritySelector";
+            prioritySelector.Size = new Size(130, 25);
+            prioritySelector.TabIndex = 4;
+            // 
+            // create_text
+            // 
+            create_text.BackColor = Color.FromArgb(20, 20, 20);
+            create_text.BorderStyle = BorderStyle.FixedSingle;
+            create_text.ForeColor = Color.DarkGray;
+            create_text.Location = new Point(11, 337);
+            create_text.Multiline = true;
+            create_text.Name = "create_text";
+            create_text.ScrollBars = ScrollBars.Both;
+            create_text.Size = new Size(201, 99);
+            create_text.TabIndex = 6;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(75, 4);
+            label3.Name = "label3";
+            label3.Size = new Size(74, 19);
+            label3.TabIndex = 0;
+            label3.Text = "Заголовок";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(5, 134);
+            label7.Name = "label7";
+            label7.Size = new Size(27, 19);
+            label7.TabIndex = 8;
+            label7.Text = "До";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(5, 96);
+            label6.Name = "label6";
+            label6.Size = new Size(26, 19);
+            label6.TabIndex = 7;
+            label6.Text = "От";
+            // 
+            // create_endDate
+            // 
+            create_endDate.CustomFormat = "dd. MM. yyyy HH:mm";
+            create_endDate.Format = DateTimePickerFormat.Custom;
+            create_endDate.Location = new Point(40, 130);
+            create_endDate.Name = "create_endDate";
+            create_endDate.Size = new Size(172, 25);
+            create_endDate.TabIndex = 3;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(47, 65);
+            label5.Name = "label5";
+            label5.Size = new Size(133, 19);
+            label5.TabIndex = 5;
+            label5.Text = "Планируемые даты";
+            // 
+            // create_startDate
+            // 
+            create_startDate.CustomFormat = "dd. MM. yyyy HH:mm";
+            create_startDate.Format = DateTimePickerFormat.Custom;
+            create_startDate.Location = new Point(41, 90);
+            create_startDate.Name = "create_startDate";
+            create_startDate.Size = new Size(171, 25);
+            create_startDate.TabIndex = 2;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(0, 175);
+            label4.Name = "label4";
+            label4.Size = new Size(78, 19);
+            label4.TabIndex = 2;
+            label4.Text = "Приоритет";
+            // 
+            // create_header
+            // 
+            create_header.BackColor = Color.FromArgb(20, 20, 20);
+            create_header.BorderStyle = BorderStyle.FixedSingle;
+            create_header.ForeColor = Color.DarkGray;
+            create_header.Location = new Point(11, 33);
+            create_header.Name = "create_header";
+            create_header.Size = new Size(201, 25);
+            create_header.TabIndex = 1;
             // 
             // listField
             // 
@@ -318,6 +539,10 @@
             panel1.Size = new Size(1126, 526);
             panel1.TabIndex = 0;
             // 
+            // create_openFile
+            // 
+            create_openFile.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -334,6 +559,7 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
@@ -348,16 +574,11 @@
 
         private Panel menu;
         private Panel sort_Panel;
-        private RadioButton sort_priority;
-        private RadioButton sort_startDate;
-        private RadioButton sort_deadline;
-        private RadioButton sort_name;
-        private RadioButton sort_default;
         private Panel listField;
         private Panel panel1;
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private MonthCalendar monthCalendar1;
+        private MonthCalendar Calendar;
         private TabPage tabPage2;
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel4;
@@ -368,5 +589,30 @@
         private Panel panel7;
         private TabPage tabPage3;
         private Label dragDropLabel;
+        private Label label2;
+        private Button button2;
+        private Button button1;
+        private TextBox textBox1;
+        private Label label1;
+        private RadioButton sort_priority;
+        private RadioButton sort_startDate;
+        private RadioButton sort_deadline;
+        private RadioButton sort_name;
+        private RadioButton sort_default;
+        private Label label4;
+        private TextBox create_header;
+        private Label label3;
+        private Label label7;
+        private Label label6;
+        private DateTimePicker create_endDate;
+        private Label label5;
+        private DateTimePicker create_startDate;
+        private TextBox create_text;
+        private DomainUpDown prioritySelector;
+        private Button create_addTask;
+        private Label label8;
+        private Label userFilePath;
+        private Button addFile;
+        private OpenFileDialog create_openFile;
     }
 }

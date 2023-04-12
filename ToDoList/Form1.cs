@@ -9,9 +9,8 @@ namespace ToDoList
     public partial class Form1 : Form
     {
         TableLayoutPanel? tableList;
-
         List<string> jsons = new List<string>();
-        List<Business> dragDropBusineses = new List<Business>();
+        List<Task> dragDropTask = new List<Task>();
 
         public Form1()
         {
@@ -20,11 +19,30 @@ namespace ToDoList
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DB.ReadFromJson();
 
+            if (DB.taskList.Count > 0)
+                PrintList(ref DB.taskList);
         }
 
-        void PrintList(ref List<Business> list)
+        void PrintList(ref List<Task> list)
         {
+            if (DB.taskList.Count > 0)
+            {
+                List<DateTime> boldDates = new List<DateTime>();
+                foreach (var item in DB.taskList)
+                {
+                    boldDates.Add(item.DateTimeStart);
+                }
+                
+                Calendar.BoldedDates = boldDates.Distinct().ToArray();
+            }
+
+            if (listField.Controls.Contains(tableList))
+            {
+                listField.Controls.Remove(tableList);
+            }
+
             tableList = new TableLayoutPanel()
             {
                 CellBorderStyle = TableLayoutPanelCellBorderStyle.None,
@@ -45,7 +63,7 @@ namespace ToDoList
                 {
                     AutoSize = false,
                     Dock = DockStyle.Top,
-                    Text = list[i].header,
+                    Text = list[i].Header,
                     TextAlign = ContentAlignment.MiddleLeft
                 };
 
@@ -53,7 +71,7 @@ namespace ToDoList
                 {
                     AutoSize = false,
                     Dock = DockStyle.Bottom,
-                    Text = $" Начало: {list[i].dateTimeStart.ToString("G")}               Окончание: {list[i].dateTimeEnd.ToString("G")}",
+                    Text = $" Начало: {list[i].DateTimeStart.ToString("G")}               Окончание: {list[i].DateTimeEnd.ToString("G")}",
                     TextAlign = ContentAlignment.MiddleCenter
                 };
 
@@ -61,7 +79,7 @@ namespace ToDoList
                 {
                     AutoSize = false,
                     Dock = DockStyle.Fill,
-                    Text = list[i].priority,
+                    Text = list[i].Priority,
                     //Font = new Font(Font, FontStyle.Bold),
                     TextAlign = ContentAlignment.MiddleCenter,
                 };
@@ -70,7 +88,7 @@ namespace ToDoList
                 {
                     AutoSize = false,
                     Dock = DockStyle.Fill,
-                    Text = list[i].comments,
+                    Text = list[i].Comments,
                     TextAlign = ContentAlignment.MiddleLeft
                 };
 
@@ -96,31 +114,50 @@ namespace ToDoList
             listField.Controls.Add(tableList);
         }
 
-        private void sortBTN_Click(object sender, EventArgs e)
-        {
-            sort_Panel.Visible = !sort_Panel.Visible;
-        }
-
         private void addBTN_Click(object sender, EventArgs e)
         {
-            for (int i = 1; i <= 10; i++)
+            if (dragDropTask.Count > 0)
             {
-                DB.businessList.Add(new Business()
-                { dateTimeStart = DateTime.Now, dateTimeEnd = DateTime.Now, comments = $"Какая то задача № {i} hgfjhgkjjfdhgkjhdsfkdhjgkhajlkhjgakljhkahlakhjskjhsakdjhfkhfskdhfakhsjfdlkahsfdlkhf", priority = "Hight", header = $"Task {i}" });
+                foreach (var item in dragDropTask)
+                {
+                    DB.taskList.Add(item);
+                }
             }
-            PrintList(ref DB.businessList);
+
+            PrintList(ref DB.taskList);
 
             dragDropLabel.Text = "Перетащи список дел сюда";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            DB.WriteToJson();
         }
 
         private void removeBTN_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show(
+                "Удалить все выделенные дела из списка?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button2
+                );
 
+            if (result == DialogResult.Yes)
+            {
+                List<Task> tasksForRemove = new List<Task>();
+
+                foreach (var item in DB.taskList)
+                    if (item.IsChecked())
+                        tasksForRemove.Add(item);
+
+                if (tasksForRemove.Count > 0)
+                    foreach (var item in tasksForRemove)
+                        DB.taskList.Remove(item);
+
+                PrintList(ref DB.taskList);
+            }
         }
 
         private void listField_Resize(object sender, EventArgs e)
@@ -180,14 +217,41 @@ namespace ToDoList
 
             foreach (var item in jsons)
             {
-                Business business = JsonConvert.DeserializeObject<Business>(item);
+                List<Task> tempList = JsonConvert.DeserializeObject<List<Task>>(item);
 
-                if (business != null)
-                    dragDropBusineses.Add(business);
+                if (tempList != null)
+                {
+                    foreach (var listItem in tempList)
+                        dragDropTask.Add(listItem);
+                }
             }
 
-            if (dragDropBusineses.Count > 0)
+            if (dragDropTask.Count > 0)
                 dragDropLabel.Text = "Нажми кнопку \"Добавить\", чтобы добавить дела в общий список";
+        }
+
+        private void create_addTask_Click(object sender, EventArgs e)
+        {
+            Task task = new Task()
+            {
+                DateTimeStart = create_startDate != null ? create_startDate.Value : DateTime.Now,
+                DateTimeEnd = create_endDate != null ? create_endDate.Value : DateTime.Now,
+                Priority = prioritySelector.SelectedItem?.ToString() ?? "Средний",
+                Header = create_header.Text ?? "Общие",
+                Comments = create_text.Text ?? "Сделать чтото важное!"
+            };
+
+            DB.taskList.Add(task);
+
+            PrintList(ref DB.taskList);
+        }
+
+        private void addFile_Click(object sender, EventArgs e)
+        {
+            if (create_openFile.ShowDialog() == DialogResult.OK)
+            {
+                userFilePath.Text = create_openFile.FileName;
+            }
         }
     }
 }
