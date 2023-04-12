@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Org.BouncyCastle.Math.EC.Rfc7748;
 using System.Drawing.Text;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -155,6 +156,8 @@ namespace ToDoList
                 if (tasksForRemove.Count > 0)
                     foreach (var item in tasksForRemove)
                         DB.taskList.Remove(item);
+                else
+                    MessageBox.Show("Нет выбранных задач для удаления", "Внимание");
 
                 PrintList(ref DB.taskList);
             }
@@ -277,7 +280,47 @@ namespace ToDoList
             {
                 MessageBox.Show("Список дел пуст", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
+        }
+
+        private void sort_default_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sort_default.Checked)
+                DB.taskList.Sort((Task first, Task second) => first.DateTimeStart.CompareTo(second.DateTimeStart));
+
+            PrintList(ref DB.taskList);
+        }
+
+        private void sort_name_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sort_name.Checked)
+                DB.taskList.Sort((Task first, Task second) => first.Header.CompareTo(second.Header));
+
+            PrintList(ref DB.taskList);
+        }
+
+        private void sort_deadline_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sort_deadline.Checked)
+                DB.taskList.Sort((Task first, Task second) => first.DateTimeEnd.CompareTo(second.DateTimeEnd));
+
+            PrintList(ref DB.taskList);
+        }
+
+        private void sort_startDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sort_startDate.Checked)
+                DB.taskList.Sort((Task first, Task second) => first.DateTimeStart.CompareTo(second.DateTimeStart));
+
+            PrintList(ref DB.taskList);
+        }
+
+        private void sort_priority_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sort_priority.Checked)
+                DB.taskList.Sort((Task first, Task second) => first.Priority.CompareTo(second.Priority));
+
+            PrintList(ref DB.taskList);
         }
     }
 }

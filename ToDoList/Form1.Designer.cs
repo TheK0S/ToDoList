@@ -141,10 +141,10 @@
             tabPage2.Controls.Add(sort_default);
             tabPage2.Controls.Add(dragDropLabel);
             tabPage2.Controls.Add(tableLayoutPanel1);
-            tabPage2.Location = new Point(4, 24);
+            tabPage2.Location = new Point(4, 26);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(228, 498);
+            tabPage2.Size = new Size(228, 496);
             tabPage2.TabIndex = 1;
             tabPage2.Text = " Изменить";
             // 
@@ -205,6 +205,7 @@
             sort_priority.TabIndex = 9;
             sort_priority.Text = "Приоритет";
             sort_priority.UseVisualStyleBackColor = true;
+            sort_priority.CheckedChanged += sort_priority_CheckedChanged;
             // 
             // sort_startDate
             // 
@@ -216,6 +217,7 @@
             sort_startDate.TabIndex = 8;
             sort_startDate.Text = "Дата создания";
             sort_startDate.UseVisualStyleBackColor = true;
+            sort_startDate.CheckedChanged += sort_startDate_CheckedChanged;
             // 
             // sort_deadline
             // 
@@ -227,6 +229,7 @@
             sort_deadline.TabIndex = 7;
             sort_deadline.Text = "Срок выполнения";
             sort_deadline.UseVisualStyleBackColor = true;
+            sort_deadline.CheckedChanged += sort_deadline_CheckedChanged;
             // 
             // sort_name
             // 
@@ -238,6 +241,7 @@
             sort_name.TabIndex = 6;
             sort_name.Text = "Название";
             sort_name.UseVisualStyleBackColor = true;
+            sort_name.CheckedChanged += sort_name_CheckedChanged;
             // 
             // sort_default
             // 
@@ -251,12 +255,13 @@
             sort_default.TabStop = true;
             sort_default.Text = "По умолчанию";
             sort_default.UseVisualStyleBackColor = true;
+            sort_default.CheckedChanged += sort_default_CheckedChanged;
             // 
             // dragDropLabel
             // 
             dragDropLabel.AllowDrop = true;
             dragDropLabel.Dock = DockStyle.Bottom;
-            dragDropLabel.Location = new Point(3, 319);
+            dragDropLabel.Location = new Point(3, 317);
             dragDropLabel.Name = "dragDropLabel";
             dragDropLabel.Size = new Size(222, 98);
             dragDropLabel.TabIndex = 2;
@@ -274,7 +279,7 @@
             tableLayoutPanel1.Controls.Add(panel4, 0, 0);
             tableLayoutPanel1.Controls.Add(panel5, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new Point(3, 417);
+            tableLayoutPanel1.Location = new Point(3, 415);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
@@ -351,10 +356,10 @@
             // 
             tabPage3.BackColor = Color.FromArgb(10, 10, 10);
             tabPage3.Controls.Add(sort_Panel);
-            tabPage3.Location = new Point(4, 26);
+            tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(228, 496);
+            tabPage3.Size = new Size(228, 498);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "  Создать   ";
             // 
@@ -379,7 +384,7 @@
             sort_Panel.Dock = DockStyle.Fill;
             sort_Panel.Location = new Point(3, 3);
             sort_Panel.Name = "sort_Panel";
-            sort_Panel.Size = new Size(222, 490);
+            sort_Panel.Size = new Size(222, 492);
             sort_Panel.TabIndex = 1;
             // 
             // create_pdf

@@ -34,7 +34,7 @@ namespace ToDoList
             }
             catch (Exception)
             {
-                //, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }
+                
             }
         }
 
@@ -47,10 +47,11 @@ namespace ToDoList
                     Document document = new Document();
                     PdfWriter.GetInstance(document, stream);
                     document.Open();
-                    //BaseFont baseFont = BaseFont.CreateFont(@"C:\Windows\Fonts\Arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+
+                    //BaseFont baseFont = BaseFont.CreateFont(@"C:\Windows\Fonts\Calibri.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
                     //iTextSharp.text.Font font = new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.NORMAL);
-                    iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.NORMAL);
-                    document.Add(new Paragraph(text, font));
+
+                    document.Add(new Paragraph(text));
                     document.Close();
                 }
 
