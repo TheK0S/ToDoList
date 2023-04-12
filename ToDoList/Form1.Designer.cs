@@ -37,7 +37,7 @@
             label2 = new Label();
             button2 = new Button();
             button1 = new Button();
-            textBox1 = new TextBox();
+            searchField = new TextBox();
             label1 = new Label();
             sort_priority = new RadioButton();
             sort_startDate = new RadioButton();
@@ -132,7 +132,7 @@
             tabPage2.Controls.Add(label2);
             tabPage2.Controls.Add(button2);
             tabPage2.Controls.Add(button1);
-            tabPage2.Controls.Add(textBox1);
+            tabPage2.Controls.Add(searchField);
             tabPage2.Controls.Add(label1);
             tabPage2.Controls.Add(sort_priority);
             tabPage2.Controls.Add(sort_startDate);
@@ -166,6 +166,7 @@
             button2.TabIndex = 3;
             button2.Text = "Отменить";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -176,15 +177,16 @@
             button1.TabIndex = 2;
             button1.Text = "Искать";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // textBox1
+            // searchField
             // 
-            textBox1.BackColor = Color.FromArgb(20, 20, 20);
-            textBox1.ForeColor = Color.DarkGray;
-            textBox1.Location = new Point(8, 45);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 25);
-            textBox1.TabIndex = 1;
+            searchField.BackColor = Color.FromArgb(20, 20, 20);
+            searchField.ForeColor = Color.DarkGray;
+            searchField.Location = new Point(8, 45);
+            searchField.Name = "searchField";
+            searchField.Size = new Size(214, 25);
+            searchField.TabIndex = 1;
             // 
             // label1
             // 
@@ -615,7 +617,7 @@
         private Label label2;
         private Button button2;
         private Button button1;
-        private TextBox textBox1;
+        private TextBox searchField;
         private Label label1;
         private RadioButton sort_priority;
         private RadioButton sort_startDate;

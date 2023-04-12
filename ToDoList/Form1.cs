@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using Org.BouncyCastle.Math.EC.Rfc7748;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
@@ -321,6 +322,22 @@ namespace ToDoList
                 DB.taskList.Sort((Task first, Task second) => first.Priority.CompareTo(second.Priority));
 
             PrintList(ref DB.taskList);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string txt = searchField.Text;
+            foreach (var i in DB.taskList)
+            {
+                if (i.Header.Contains(txt) || i.Comments.Contains(txt) || i.Priority.Contains(txt))
+                    i.checkBox.Checked = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (var i in DB.taskList)
+                i.checkBox.Checked = false;
         }
     }
 }
